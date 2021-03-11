@@ -8,9 +8,11 @@ cd kafka
 sleep 30
 export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
 ./bin/kafka-server-start.sh config/server.properties > /dev/null &
+cd ..
+wget https://github.com/obsidiandynamics/kafdrop/archive/3.27.0.tar.gz
 tar -xzf 3.27.0.tar.gz
 cd kafdrop-3.27.0
 mvn clean package
 java --add-opens=java.base/sun.nio.ch=ALL-UNNAMED -jar target/kafdrop-3.27.0.jar  --kafka.brokerConnect=localhost:9092
-wget https://github.com/obsidiandynamics/kafdrop/archive/3.27.0.tar.gz
+
  
